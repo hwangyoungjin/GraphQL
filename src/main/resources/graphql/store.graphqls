@@ -1,0 +1,34 @@
+extend type Query {
+    storeById(id: ID): Store
+}
+
+extend type Mutation {
+    createStore(createStoreInput: CreateStoreInput!): Store!,
+    updateStore(updateStoreInput: UpdateStoreInput!): Store!,
+    deleteStoreById(storeId: Int!): Boolean!
+}
+
+input CreateStoreInput {
+    storeName: String, # non-null
+    city: String, # non-null
+    state: String, # non-null
+    zipCode: String # nullable
+}
+
+input UpdateStoreInput {
+    storeId: Int!, # non-null
+    storeName: String, # non-null
+    city: String, # non-null
+    state: String, # non-null
+    zipCode: String # nullable
+}
+
+type Store {
+    id: Int
+    name: String
+    city: String!, # non-null
+    state: String!, # non-null
+    zipCode: String # nullable
+}
+
+
