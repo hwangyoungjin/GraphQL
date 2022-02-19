@@ -1,4 +1,4 @@
-## GraphQL + Spring WebFlux + Kotlin + r2dbc + Mysql
+## GraphQL + DataLoader + Spring WebFlux + Kotlin + r2dbc + Mysql
 ### Based on Clean Architecture
 - [Ref.1](https://medium.com/swlh/graphql-kotlin-tutorial-344f5fe0c71a)
 - [Ref.2](https://www.graphql-java.com/tutorials/getting-started-with-spring-boot/)
@@ -21,7 +21,9 @@
    No Root resolvers for mutation type 'Mutation' found!  Provide one or more com.coxautodev.graphql.tools.GraphQLMutationResolver to the builder.
    ```
 
+## 1. GraphQL Basic
 
+---
 ### 1. dependeny
 - GraphQL
 ```kotlin
@@ -95,11 +97,31 @@ mutation {
 }
 ```
 
-### 3.GraphQL에서 제공 되는 스칼라 타입
+### 3. GraphQL에서 제공 되는 스칼라 타입과 스키마
+#### 1. 스칼라 타입
 ```text
 1. Int: 부호가 있는 32비트 정수
 2. Float: 부호가 있는 부동소수점 값 
 3. String: UTF-8 문자열 
 4. Boolean: true 또는 false 
-5. ID: ID 스칼라 타입은 객체를 다시 요청하거나 캐시의 키로써 자주 사용되는 고유 식별자를 나타낸다. ID타입은 String과 같은 방법으로 직렬화되지만, ID로 정의하는 것은 사람이 읽을 수 있도록 하는 의도가 아니라는 것을 의미한다.
+5. ID: 사실상 String인데, 의미적으로 ID로 쓰인다는걸 알려주는 타입
 ```
+#### 2. 스키마 타입
+```graphql
+type Store {
+    name: String!
+    products: [ProductInput!]!
+}
+```
+```text
+- 오브젝트 타입: Store
+- 필드: name, products
+- 느낌표: 필수값 (non-nullable)
+- 대괄호: 배열
+```
+
+## 2. GraphQL DataLoader
+
+---
+
+
