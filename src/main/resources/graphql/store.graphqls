@@ -9,26 +9,36 @@ extend type Mutation {
 }
 
 input CreateStoreInput {
-    storeName: String, # non-null
-    city: String, # non-null
-    state: String, # non-null
+    storeName: String # non-null
+    status: StoreStatus
+    city: String # non-null
+    state: String # non-null
     zipCode: String # nullable
 }
 
 input UpdateStoreInput {
-    storeId: Int!, # non-null
-    storeName: String, # non-null
-    city: String, # non-null
-    state: String, # non-null
+    storeId: Int! # non-null
+    storeName: String # non-null
+    status: StoreStatus
+    city: String # non-null
+    state: String # non-null
     zipCode: String # nullable
 }
 
 type Store {
     id: Int
     name: String
+    status: StoreStatus
     city: String!, # non-null
     state: String!, # non-null
     zipCode: String # nullable
+}
+
+enum StoreStatus{
+    PENDING
+    ACTIVE
+    INACTIVE
+    DELETED
 }
 
 

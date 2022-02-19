@@ -39,6 +39,7 @@ create table STORE
 (
     id       BIGINT auto_increment,
     name     varchar(150) null,
+    status   varchar(20) null,
     city     varchar(100) null,
     state    varchar(100) null,
     zip_code varchar(100) null,
@@ -79,15 +80,26 @@ query {
 mutation {
     createStore(createStoreInput: {
         storeName: "thrid",
+        status: PENDING,
         city : "thrid",
         state : "thrid",
         zipCode : "thrid",
     }) { # 아래는 응답 'store' type field의 값을 받아온다.
         id,
         name,
+        status,
         city,
         state,
         zipCode
     }
 }
+```
+
+### 3.GraphQL에서 제공 되는 스칼라 타입
+```text
+1. Int: 부호가 있는 32비트 정수
+2. Float: 부호가 있는 부동소수점 값 
+3. String: UTF-8 문자열 
+4. Boolean: true 또는 false 
+5. ID: ID 스칼라 타입은 객체를 다시 요청하거나 캐시의 키로써 자주 사용되는 고유 식별자를 나타낸다. ID타입은 String과 같은 방법으로 직렬화되지만, ID로 정의하는 것은 사람이 읽을 수 있도록 하는 의도가 아니라는 것을 의미한다.
 ```

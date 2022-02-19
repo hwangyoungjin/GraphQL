@@ -14,6 +14,7 @@ class StoreMutationResolver(
     suspend fun createStore(input: CreateStoreInputTO) = storeAggregator.createStore(
         Store(
             name = input.storeName,
+            status = input.status,
             city = input.city,
             state = input.state,
             zipCode = input.zipCode
@@ -24,6 +25,7 @@ class StoreMutationResolver(
         return storeAggregator.updateStore(Store(
             id = storeInput.storeId.toLong(),
             name = storeInput.storeName,
+            status = storeInput.status,
             city = storeInput.city,
             state = storeInput.state,
             zipCode = storeInput.zipCode,
