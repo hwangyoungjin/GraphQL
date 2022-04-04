@@ -120,7 +120,53 @@ type Store {
 - 대괄호: 배열
 ```
 
-## 2. GraphQL DataLoader
+## 2. Error Handling
+
+---
+### 1. Http status
+```text
+GraphQL은 error 필드를 제공하기 때문에 상태코드는 항상 200을 반환
+```
+### 2. Spring properties 설정
+```properties
+#error message 사용하기
+graphql:
+  servlet:
+    exception-handlers-enabled: true
+```
+
+### 3. Exception 활용
+```kotlin
+suspend fun storeById(id: Long) : Store? {
+  return storeAggregator.findStoreById(id)?: throw StoreNotfoundException("Not found storeId: $id")
+}
+```
+
+### 4. Request/Response
+```graphql
+#Request
+query {
+  storeById(id: 100){
+    name
+    status
+    state
+  }
+},
+
+#Response
+{
+"errors": [
+{
+"message": "Not found storeId: 100"
+}
+],
+"data": {
+"storeById": null
+}
+
+```
+
+## 3. GraphQL DataLoader
 
 ---
 

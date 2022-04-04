@@ -8,7 +8,9 @@ import org.springframework.stereotype.Component
 class StoreAggregator(
     private val storeRepository: StoreRepository,
 ) {
-    suspend fun findStoreById(id: Long) = storeRepository.findById(id)
+    suspend fun findStoreById(id: Long): Store?{
+      return storeRepository.findById(id)
+    }
 
     suspend fun createStore(store: Store) = storeRepository.save(store)
 
