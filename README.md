@@ -127,7 +127,7 @@ type Store {
 ```text
 GraphQL은 error 필드를 제공하기 때문에 상태코드는 항상 200을 반환
 ```
-### 2. Spring properties 설정
+### 2. Spring properties 설정 [참조](https://www.youtube.com/watch?v=p3mA1OQg1kc&t=105s)
 ```properties
 #error message 사용하기
 graphql:
