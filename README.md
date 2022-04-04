@@ -123,7 +123,7 @@ type Store {
 ## 2. Error Handling
 
 ---
-### 1. Http status
+### 1. Http status [참조](https://medium.com/swlh/understanding-graphql-error-handling-mechanisms-in-spring-boot-604301c9bedb)
 ```text
 GraphQL은 error 필드를 제공하기 때문에 상태코드는 항상 200을 반환
 ```
